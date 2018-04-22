@@ -39,6 +39,21 @@ router.get('/rugs/:id',function(req,res){
     });
 });
 
+//Insert new data into DB
+router.post('/rug', function(req,res){
+    console.log('Post a Rug data');
+    var newRug = new Rug();
+    newRug.name = req.body.name;
+    newRug.price = req.body.price;
+    newRug.serialNumber = req.body.serialNumber;
+    newRug.save(function(err, insertedRug){
+        if(err){
+            console.log('Error saving video');
+        } else {
+            res.json(insertedRug);
+        }
+    });
+});
 
 
 module.exports = router;
