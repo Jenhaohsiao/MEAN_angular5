@@ -48,12 +48,34 @@ router.post('/rug', function(req,res){
     newRug.serialNumber = req.body.serialNumber;
     newRug.save(function(err, insertedRug){
         if(err){
-            console.log('Error saving video');
+            console.log('Error saving Rug data');
         } else {
             res.json(insertedRug);
         }
     });
 });
+
+// update data in Mongodb
+router.put('/rug/:id', function(req, res){
+    console.log('update a Rug data');
+    Rug.findByIdAndUpdate(req.params.id,
+    {
+        $set: {name: req.body.name,
+            price:req.body.price, 
+            serialNumber:req.body.serialNumber }
+    },
+    {
+        new: true
+    },
+    function(err, updatedRug){
+        if(err){
+            res.send("Error with updating Rug");
+        } else {
+            res.json(updatedRug);
+        }
+    }); 
+});
+
 
 
 module.exports = router;
