@@ -76,6 +76,17 @@ router.put('/rug/:id', function(req, res){
     }); 
 });
 
+//Del Rug data in MongoDB
+router.delete('/rug/:id', function(req, res){
+    console.log('Deleting a Rug data');
+    Rug.findByIdAndRemove(req.params.id, function(err,deletedRug){
+        if(err){
+            res.send("Error with deleting Rug");
+        }else{
+            res.json(deletedRug);
+        }
+    });
+});
 
 
 module.exports = router;
