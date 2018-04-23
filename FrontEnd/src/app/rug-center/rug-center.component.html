@@ -27,6 +27,7 @@
     <!-- ngIf for only user select item otherwise show nothing.-->
     <!-- rug-center send the selected item to rug-detail component.-->
     <rug-detail (updateRugEvent)= "onUpdateRugEvent($event)"
+                (deleteRugEvent)= "onDeleteRugEvent($event)"
       *ngIf="selectedRug && hidenNewRug" [rug]="selectedRug">
     </rug-detail>
   </div>

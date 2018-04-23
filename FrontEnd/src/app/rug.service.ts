@@ -10,6 +10,7 @@ export class RugService {
   private _getUrl = '/api/rugs';
   private _postUrl = '/api/rug';
   private _putUrl = '/api/rug/';
+  private _deleteUrl = '/api/rug/';
 
   // dependency injection to get and instance of Http
   constructor(private _http: Http) { }
@@ -35,6 +36,10 @@ export class RugService {
     .map((response: Response) => response.json());
   }
 
+  deleteRug(rug: Rug) {
+    return this._http.delete(this._deleteUrl + rug._id)
+    .map((response: Response) => response.json());
+  }
 
 }
 
