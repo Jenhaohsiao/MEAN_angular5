@@ -6,9 +6,9 @@ import { RugListComponent } from './rug-list/rug-list.component';
 
 // Set the paths for each component
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
-  {path: 'rugs', component: RugListComponent}
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'rugs', component: RugListComponent }
 ];
 
 @NgModule({
