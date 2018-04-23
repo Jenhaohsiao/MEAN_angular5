@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-sm-9">
-    <rug-detail></rug-detail>
+    <!-- ngIf for only user select item otherwise show nothing.-->
+    <!-- rug-center send the selected item to rug-detail component.-->
+    <rug-detail *ngIf="selectedRug" [rug]="selectedRug"></rug-detail>
   </div>
   <div class="col-sm-3">
-    <rug-list [rugsArray] = "rugsArray"></rug-list>
+    <!--When event raised will call "onSelectRug" method, and pass event-->
+    <rug-list (SelectRug)= "onSelectRug($event)" [rugsArray] = "rugsArray"></rug-list>
   </div>
 </div>

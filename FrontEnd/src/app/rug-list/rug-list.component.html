@@ -1,3 +1,5 @@
 <ul class = " nav flex-column">
-  <li *ngFor="let rug of rugsArray"><a>{{rug.name}}</a></li>
+  <!-- List all rugs data -->
+  <!-- click event to show the detail data in detail component -->
+  <li (click)="onSelect(rug)" *ngFor="let rug of rugsArray"><a>{{rug.name}}</a></li>
 </ul>
