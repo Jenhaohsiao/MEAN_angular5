@@ -1,11 +1,39 @@
 <div class="row">
   <div class="col-sm-9">
+    <div *ngIf = "!hidenNewRug">
+      <h2>Add A New Rug</h2>
+      <!-- Click 'SAVE' button to submit, 'onSubmitAddRug' send this form value -->
+      <form #form="ngForm" (ngSubmit) = "onSubmitAddRug(form.value)" class="well">
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" required name="name" ngModel>
+        </div>
+
+        <div class="form-group">
+          <label>Price</label>
+          <input type="text" class="form-control" required name="price" ngModel>
+        </div>
+
+        <div class="form-group">
+          <label>Serial Number</label>
+          <input type="text" class="form-control" required name="Serial Number" ngModel>
+        </div>
+
+        <button type="submit" class ="btn btn-success">SAVE</button>
+
+
+      </form>
+
+    </div>
     <!-- ngIf for only user select item otherwise show nothing.-->
     <!-- rug-center send the selected item to rug-detail component.-->
-    <rug-detail *ngIf="selectedRug" [rug]="selectedRug"></rug-detail>
+    <rug-detail *ngIf="selectedRug && hidenNewRug" [rug]="selectedRug"></rug-detail>
   </div>
   <div class="col-sm-3">
+    <!-- When button click, "newRug()" = false -->
+    <button (click)="newRug()" style="margin-bottom:2px;" type="button" class="btn btn-success btn-block"> Add New item</button>
     <!--When event raised will call "onSelectRug" method, and pass event-->
-    <rug-list (SelectRug)= "onSelectRug($event)" [rugsArray] = "rugsArray"></rug-list>
+    <rug-list (SelectRug)="onSelectRug($event)" [rugsArray]="rugsArray"></rug-list>
   </div>
 </div>
