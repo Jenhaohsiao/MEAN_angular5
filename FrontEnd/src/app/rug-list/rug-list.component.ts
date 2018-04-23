@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-rug-list',
+  selector: 'rug-list',
   templateUrl: './rug-list.component.html',
-  styleUrls: ['./rug-list.component.css']
+  styleUrls: ['./rug-list.component.css'],
+  inputs: ['rugsArray']
 })
 export class RugListComponent implements OnInit {
 
