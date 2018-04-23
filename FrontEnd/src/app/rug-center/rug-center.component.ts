@@ -16,9 +16,18 @@ export class RugCenterComponent implements OnInit {
     {'_id': '05', 'name': 'Type F', 'price': '$2,663', 'serialNumber': 'NO.02291'}
   ];
 
+  // the selected rug passed by list selected.
+  selectedRug: Rug;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  // catch the selected item and send to detail
+  onSelectRug(rug: any) {
+    this.selectedRug = rug;
+    console.log(this.selectedRug);
   }
 
 }
