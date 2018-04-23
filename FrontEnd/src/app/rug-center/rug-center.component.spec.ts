@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RugShowListComponent } from './rug-show-list.component';
+import { RugCenterComponent } from './rug-center.component';
 
-describe('RugShowListComponent', () => {
-  let component: RugShowListComponent;
-  let fixture: ComponentFixture<RugShowListComponent>;
+describe('RugCenterComponent', () => {
+  let component: RugCenterComponent;
+  let fixture: ComponentFixture<RugCenterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RugShowListComponent ]
+      declarations: [ RugCenterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RugShowListComponent);
+    fixture = TestBed.createComponent(RugCenterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { RugListComponent } from './rug-list/rug-list.component';
+import { RugCenterComponent } from './rug-center/rug-center.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { RugShowListComponent } from './rug-show-list/rug-show-list.component';
+import { RugListComponent } from './rug-list/rug-list.component';
 import { RugDetailComponent } from './rug-detail/rug-detail.component';
 
 
@@ -14,8 +14,8 @@ import { RugDetailComponent } from './rug-detail/rug-detail.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    RugCenterComponent,
     RugListComponent,
-    RugShowListComponent,
     RugDetailComponent
   ],
   imports: [
