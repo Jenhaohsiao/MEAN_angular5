@@ -22,13 +22,13 @@
 
         <button type="submit" class ="btn btn-success">SAVE</button>
 
-
       </form>
-
     </div>
     <!-- ngIf for only user select item otherwise show nothing.-->
     <!-- rug-center send the selected item to rug-detail component.-->
-    <rug-detail *ngIf="selectedRug && hidenNewRug" [rug]="selectedRug"></rug-detail>
+    <rug-detail (updateRugEvent)= "onUpdateRugEvent($event)"
+      *ngIf="selectedRug && hidenNewRug" [rug]="selectedRug">
+    </rug-detail>
   </div>
   <div class="col-sm-3">
     <!-- When button click, "newRug()" = false -->
