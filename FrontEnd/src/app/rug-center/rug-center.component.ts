@@ -43,6 +43,13 @@ export class RugCenterComponent implements OnInit {
     });
   }
 
+  onUpdateRugEvent(rug: any) {
+    this._rugService.updateRug(rug).subscribe(resUpdatedRug =>
+      rug = resUpdatedRug
+    );
+    this.selectedRug = null;
+  }
+
   newRug() {
     this.hidenNewRug = false;
   }

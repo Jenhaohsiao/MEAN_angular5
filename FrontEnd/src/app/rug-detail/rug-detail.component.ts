@@ -4,12 +4,16 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
   selector: 'rug-detail',
   templateUrl: './rug-detail.component.html',
   styleUrls: ['./rug-detail.component.css'],
-  inputs: ['rug'] // the data from rug-center
+  // tslint:disable-next-line:use-input-property-decorator
+  inputs: ['rug'], // the data from rug-center
+  // tslint:disable-next-line:use-output-property-decorator
+  outputs: ['updateRugEvent']
 })
 export class RugDetailComponent implements OnInit {
 
+  rug: any;
   private editName = false;
-
+  private updateRugEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -24,6 +28,10 @@ export class RugDetailComponent implements OnInit {
   // When user click, "editeName" becomes "true"
   onNameClick() {
     this.editName = true;
+  }
+  // Pass rug data when user click from html
+  updateRug() {
+    this.updateRugEvent.emit(this.rug);
   }
 
 }
