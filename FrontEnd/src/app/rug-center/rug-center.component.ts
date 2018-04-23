@@ -6,7 +6,7 @@ import { RugService } from '../rug.service';
   selector: 'app-rug-center',
   templateUrl: './rug-center.component.html',
   styleUrls: ['./rug-center.component.css'],
-  providers: [ RugService]
+  providers: [RugService]
 })
 export class RugCenterComponent implements OnInit {
 
@@ -47,6 +47,19 @@ export class RugCenterComponent implements OnInit {
     this._rugService.updateRug(rug).subscribe(resUpdatedRug =>
       rug = resUpdatedRug
     );
+    this.selectedRug = null;
+  }
+
+  onDeleteRugEvent(rug: any) {
+    const rugsArrayForDel = this.rugsArray;
+    // update the UI, show new list without the item deleted.
+    this._rugService.deleteRug(rug).subscribe(resDeletedRug => {
+      for (let i = 0; i < rugsArrayForDel.length; i++) {
+        if (rugsArrayForDel[i]._id === rug._id) {
+          rugsArrayForDel.splice(i, 1);
+        }
+      }
+    });
     this.selectedRug = null;
   }
 

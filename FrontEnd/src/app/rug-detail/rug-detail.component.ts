@@ -7,13 +7,15 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
   // tslint:disable-next-line:use-input-property-decorator
   inputs: ['rug'], // the data from rug-center
   // tslint:disable-next-line:use-output-property-decorator
-  outputs: ['updateRugEvent']
+  outputs: ['updateRugEvent', 'deleteRugEvent']
 })
 export class RugDetailComponent implements OnInit {
 
   rug: any;
   private editName = false;
   private updateRugEvent = new EventEmitter();
+  private deleteRugEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -32,6 +34,10 @@ export class RugDetailComponent implements OnInit {
   // Pass rug data when user click from html
   updateRug() {
     this.updateRugEvent.emit(this.rug);
+  }
+
+  deleteRug() {
+    this.deleteRugEvent.emit(this.rug);
   }
 
 }
