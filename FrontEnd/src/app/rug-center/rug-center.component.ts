@@ -14,6 +14,7 @@ export class RugCenterComponent implements OnInit {
 
   // the selected rug passed by list selected.
   selectedRug: Rug;
+  private hidenNewRug = true;
 
   // dependency injection, from RugService
   constructor(private _rugService: RugService) { }
@@ -26,7 +27,24 @@ export class RugCenterComponent implements OnInit {
   // catch the selected item and send to detail
   onSelectRug(rug: any) {
     this.selectedRug = rug;
+    this.hidenNewRug = true;
     console.log(this.selectedRug);
+  }
+
+  // Get form.value from HTML, and push by rugService.addRug
+  onSubmitAddRug(rug: Rug) {
+    this._rugService.addRug(rug).subscribe(resNewRug => {
+      // After submit, and the view also gets updated.
+      this.rugsArray.push(resNewRug);
+      // the new Rug shows on the detail view
+      this.selectedRug = resNewRug;
+      this.hidenNewRug = true;
+
+    });
+  }
+
+  newRug() {
+    this.hidenNewRug = false;
   }
 
 }
