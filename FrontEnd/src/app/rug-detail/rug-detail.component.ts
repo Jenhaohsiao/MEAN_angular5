@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'rug-detail',
@@ -8,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RugDetailComponent implements OnInit {
 
+  private editName = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  // Listen to ng on changes life cycle hook,
+  // When user click another item and change it back to "false"
+  ngOnChanges() {
+    this.editName = false;
+  }
+
+  // When user click, "editeName" becomes "true"
+  onNameClick() {
+    this.editName = true;
   }
 
 }
