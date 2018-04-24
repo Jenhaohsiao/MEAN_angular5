@@ -8,7 +8,7 @@
 
     <!--if "editeName" = false , will show this section  -->
     <!-- When user click it, "editeName" becomes "false" -->
-    <h3 *ngIf="!editName" (click)="onNameClick()">{{rug.name}}</h3>
+    <h3 *ngIf="!editName" (click)="onNameClick()" >{{rug.name}}</h3>
 
     <div class="form-group">
       <input type="input" class="form-control" name="price" required placeholder="Price" [(ngModel)]="rug.price">
