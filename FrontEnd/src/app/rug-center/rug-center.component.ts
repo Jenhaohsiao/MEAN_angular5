@@ -47,7 +47,7 @@ export class RugCenterComponent implements OnInit {
     this._rugService.updateRug(rug).subscribe(resUpdatedRug =>
       rug = resUpdatedRug
     );
-    this.selectedRug = null;
+    // this.selectedRug = null;
   }
 
   onDeleteRugEvent(rug: any) {

@@ -12,7 +12,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 export class RugDetailComponent implements OnInit {
 
   rug: any;
-  private editName = false;
+  private editItem = false;
   private updateRugEvent = new EventEmitter();
   private deleteRugEvent = new EventEmitter();
 
@@ -24,16 +24,17 @@ export class RugDetailComponent implements OnInit {
   // Listen to ng on changes life cycle hook,
   // When user click another item and change it back to "false"
   ngOnChanges() {
-    this.editName = false;
+    this.editItem = false;
   }
 
   // When user click, "editeName" becomes "true"
   onNameClick() {
-    this.editName = true;
+    this.editItem = true;
   }
   // Pass rug data when user click from html
   updateRug() {
     this.updateRugEvent.emit(this.rug);
+    this.editItem = false;
   }
 
   deleteRug() {

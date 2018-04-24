@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 //create Schema for urg 
 const rugSchema = new Schema({
     name:String,
-    price:String,
+    price:Number,
     serialNumber:String
 });
 
