@@ -1,24 +1,40 @@
 <div>
   <form>
-    <!--if "editeName" = true , will show this section -->
-    <div *ngIf="editName" class="form-group">
-      <!-- two way data binding using [(ngModel)] -->
-      <input type="input" class="form-control" name="name" required placeholder="Name" [(ngModel)]="rug.name">
+    <!--if "editItem" = true , will show this section -->
+    <div *ngIf="editItem">
+      <div class="form-group">
+        <h5>Name:</h5>
+        <input type="input" class="form-control" name="name"
+        required placeholder="Name" [(ngModel)]="rug.name">
+      </div>
+
+      <div class="form-group">
+        <h5>Price:</h5>
+        <input type="number" class="form-control" name="price"
+        required placeholder="Price (number only)" [(ngModel)]="rug.price">
+      </div>
+
+      <div class="form-group">
+        <h5>Serial Number:</h5>
+        <input type="input" class="form-control" name="serialNumber"
+        required placeholder="Serial Number" [(ngModel)]="rug.serialNumber">
+      </div>
     </div>
 
-    <!--if "editeName" = false , will show this section  -->
-    <!-- When user click it, "editeName" becomes "false" -->
-    <h3 *ngIf="!editName" (click)="onNameClick()" >{{rug.name}}</h3>
-
-    <div class="form-group">
-      <input type="input" class="form-control" name="price" required placeholder="Price" [(ngModel)]="rug.price">
+    <!--if "editItem" = false , will show this section  -->
+    <div *ngIf="!editItem" class="itemDetail">
+      <h5>Name:</h5>
+      <p>{{rug.name}}</p>
+      <h5>Price:</h5>
+      <p>{{rug.price  | currency: 'CAD ': 'code'}}</p>
+      <h5>Serial Number:</h5>
+      <p>{{rug.serialNumber}}</p>
     </div>
 
-    <div class="form-group">
-      <input type="input" class="form-control" name="serialNumber" required placeholder="Serial Number" [(ngModel)]="rug.serialNumber">
-    </div>
-    <button type="button" (click)= "updateRug()" class="btn btn-primary">UPDATE</button>
-    <button type="button" (click)= "deleteRug()" class="btn btn-danger">Delete</button>
+
+    <button *ngIf="editItem" type="button" (click)="updateRug()" class="btn btn-primary">Update</button>
+    <button *ngIf="!editItem" type="button" (click)="onNameClick()" class="btn btn-primary">Edit</button>
+    <button type="button" (click)="deleteRug()" class="btn btn-danger">Delete</button>
 
   </form>
 </div>

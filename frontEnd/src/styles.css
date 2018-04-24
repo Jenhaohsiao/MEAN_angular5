@@ -22,3 +22,12 @@
   font-size: 15px;
   font-weight: 100;
 }
+
+.bigLogo{
+text-align: center;
+}
+
+.itemDetail p{
+  font-size: 15px;
+  color: #4d4747;
+}
