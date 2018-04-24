@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+.form-container{
+  margin: 20px 0;
+}
+
+#logo-small-container{
+  height: 50px;
+  width:auto;
+  border-radius: 25%;
+}
+
+.navbar-background{
+  background-color: #766969;
+}
+
+.listItemBackground{
+  padding: 10px 5px;
+  margin: 5px 0px;
+  background-color: #b6c1c0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 100;
+}
