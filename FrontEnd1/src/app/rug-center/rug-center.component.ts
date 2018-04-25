@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Rug } from './../rug';
-import { RugService } from '../rug.service';
+import { Rug } from '../shared/models/rug.model';
+import { RugService } from '../shared/services/rug.service';
 
 @Component({
   selector: 'app-rug-center',
