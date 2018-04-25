@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Rug } from '../shared/models/rug.model';
 import { RugService } from '../shared/services/rug.service';
 
