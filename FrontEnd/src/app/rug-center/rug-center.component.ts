@@ -5,7 +5,7 @@ import { RugService } from '../rug.service';
 @Component({
   selector: 'app-rug-center',
   templateUrl: './rug-center.component.html',
-  styleUrls: ['./rug-center.component.css'],
+  styleUrls: ['./rug-center.component.scss'],
   providers: [RugService]
 })
 export class RugCenterComponent implements OnInit {

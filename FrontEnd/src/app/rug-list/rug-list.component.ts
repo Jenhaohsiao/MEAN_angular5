@@ -4,7 +4,7 @@ import { Rug } from './../rug';
 @Component({
   selector: 'rug-list',
   templateUrl: './rug-list.component.html',
-  styleUrls: ['./rug-list.component.css'],
+  styleUrls: ['./rug-list.component.scss'],
   inputs: ['rugsArray'], // input array and show on the list.
   outputs: ['SelectRug'] // output the selected item send to rug-center.
 })
