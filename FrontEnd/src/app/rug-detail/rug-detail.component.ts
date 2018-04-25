@@ -1,44 +1,28 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { Rug } from '../shared/models/rug.model';
+import { RugService } from './../shared/services/rug.service';
 @Component({
   selector: 'app-rug-detail',
   templateUrl: './rug-detail.component.html',
   styleUrls: ['./rug-detail.component.scss'],
-  // tslint:disable-next-line:use-input-property-decorator
-  inputs: ['rug'], // the data from rug-center
-  // tslint:disable-next-line:use-output-property-decorator
-  outputs: ['updateRugEvent', 'deleteRugEvent']
 })
 export class RugDetailComponent implements OnInit {
 
-  rug: any;
-  private editItem = false;
-  private updateRugEvent = new EventEmitter();
-  private deleteRugEvent = new EventEmitter();
+  @Input() rug: Rug;
+  @Input() editMode = false;
 
-  constructor() { }
+  @Output() save = new EventEmitter();
+  @Output() delete = new EventEmitter();
+  @Output() edit = new EventEmitter();
+  @Output() fileChange = new EventEmitter();
+
+  constructor(public rugService: RugService) { }
 
   ngOnInit() {
   }
 
-  // Listen to ng on changes life cycle hook,
-  // When user click another item and change it back to "false"
-  ngOnChanges() {
-    this.editItem = false;
+  onClickEdit() {
+    this.editMode = !this.editMode;
   }
-
-  // When user click, "editeName" becomes "true"
-  onNameClick() {
-    this.editItem = true;
-  }
-  // Pass rug data when user click from html
-  updateRug() {
-    this.updateRugEvent.emit(this.rug);
-    this.editItem = false;
-  }
-
-  deleteRug() {
-    this.deleteRugEvent.emit(this.rug);
-  }
-
 }

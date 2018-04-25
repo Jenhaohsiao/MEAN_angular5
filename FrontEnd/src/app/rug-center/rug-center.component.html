@@ -1,52 +1,13 @@
 <div class="row">
+    <div class="col-md-4">
+      <button type="button" class="btn btn-success btn-block add-rug" (click)="onAddRug()">Add New item</button>
 
-  <div class="col-md-4">
-    <!-- When button click, "newRug()" = false -->
-    <button (click)="newRug()" style="margin-bottom:2px;"
-            type="button" class="btn btn-success btn-block"> Add New item</button>
-
-    <p>Total Quantity:  {{rugs.length}}</p>
-<!--When event raised will call "onSelectRug" method, and pass event-->
-    <app-rug-list (SelectRug)="onSelectRug($event)" [rugs]="rugs"></app-rug-list>
-  </div>
-
-  <div class="col-md-8">
-    <div *ngIf="!hidenNewRug">
-      <h2>Add A New Rug</h2>
-      <!-- Click 'SAVE' button to submit, 'onSubmitAddRug' send this form value -->
-      <form #form="ngForm" (ngSubmit)="onSubmitAddRug(form.value)" class="well">
-
-        <div class="form-group">
-            <h5>Name:</h5>
-          <input type="text" class="form-control"
-            required placeholder="Name" name="name" ngModel>
-        </div>
-
-        <div class="form-group">
-            <h5>Price:</h5>
-          <input type="number" class="form-control"
-            required placeholder="Price (number only)"name="price" ngModel>
-        </div>
-
-        <div class="form-group">
-            <h5>Serial Number:</h5>
-          <input type="text" class="form-control"
-          required placeholder="Serial Number" name="serialNumber" ngModel>
-        </div>
-
-        <button type="submit" class="btn btn-success">SAVE</button>
-
-      </form>
+      <p>Total Quantity: {{rugs.length}}</p>
+      <app-rug-list [rugs]="rugs" (select)="onSelectRug($event)"></app-rug-list>
     </div>
 
-    <!-- ngIf for only user select item otherwise show nothing.-->
-    <!-- rug-center send the selected item to rug-detail component.-->
-    <div *ngIf="hidenNewRug">
-        <app-rug-detail (updateRugEvent)="onUpdateRugEvent($event)" (deleteRugEvent)="onDeleteRugEvent($event)" *ngIf="selectedRug && hidenNewRug"
-        [rug]="selectedRug">
+    <div class="col-md-8">
+      <app-rug-detail *ngIf="rug" [rug]="rug" [editMode]="editMode" (save)="onSaveRug($event)" (delete)="onDeleteRug($event)" (edit)="onEdit()" (fileChange)="onFileChange($event)">
       </app-rug-detail>
     </div>
-
   </div>
-
-</div>
