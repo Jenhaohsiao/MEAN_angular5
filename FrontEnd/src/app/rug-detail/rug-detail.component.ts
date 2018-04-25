@@ -2,13 +2,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Rug } from '../shared/models/rug.model';
 import { RugService } from './../shared/services/rug.service';
+
 @Component({
   selector: 'app-rug-detail',
   templateUrl: './rug-detail.component.html',
-  styleUrls: ['./rug-detail.component.scss'],
+  styleUrls: ['./rug-detail.component.scss']
 })
 export class RugDetailComponent implements OnInit {
-
   @Input() rug: Rug;
   @Input() editMode = false;
 

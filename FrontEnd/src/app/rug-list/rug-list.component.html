@@ -1,8 +1,6 @@
 <ul class="nav flex-column">
     <li *ngFor="let rug of rugs" class="list-item-background" (click)="select.emit(rug)">
+      <img [src]="rugService.getSafeResourceUrl(rug)" width="30" height="30">
       <a>{{rug.name}}</a>
     </li>
   </ul>
-
-
-

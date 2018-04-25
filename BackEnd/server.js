@@ -1,14 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const api = require('./routes/api');
 
-// API Routes
-const api = require('../BackEnd/routes/api');
-
-// LocalHost Port
 const port = 3000;
 const app = express();
-app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,14 +14,19 @@ app.use(function (req, res, next) {
   next();
 });
 
-// parse the text as Url encoded data
-app.use(bodyParser.urlencoded({extended: true}));
-// parse the text as Json
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  limit: '50mb',
+  extended: true
+}));
+
+app.use(bodyParser.json({
+  limit: '50mb'
+}));
+
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api', api);
 
-// Listen to request on port 3000
-app.listen(port, function(){
-    console.log("Server running on localhost:" + port);
+app.listen(port, function () {
+  console.log("Server running on localhost:" + port);
 });
