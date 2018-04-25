@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'rug-detail',
+  selector: 'app-rug-detail',
   templateUrl: './rug-detail.component.html',
   styleUrls: ['./rug-detail.component.scss'],
   // tslint:disable-next-line:use-input-property-decorator

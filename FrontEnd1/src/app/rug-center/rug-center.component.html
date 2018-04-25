@@ -7,7 +7,7 @@
 
     <p>Total Quantity:  {{rugsArray.length}}</p>
 <!--When event raised will call "onSelectRug" method, and pass event-->
-    <rug-list (SelectRug)="onSelectRug($event)" [rugsArray]="rugsArray"></rug-list>
+    <app-rug-list (SelectRug)="onSelectRug($event)" [rugsArray]="rugsArray"></app-rug-list>
   </div>
 
   <div class="col-md-8">
@@ -42,9 +42,9 @@
     <!-- ngIf for only user select item otherwise show nothing.-->
     <!-- rug-center send the selected item to rug-detail component.-->
     <div *ngIf="hidenNewRug">
-        <rug-detail (updateRugEvent)="onUpdateRugEvent($event)" (deleteRugEvent)="onDeleteRugEvent($event)" *ngIf="selectedRug && hidenNewRug"
+        <app-rug-detail (updateRugEvent)="onUpdateRugEvent($event)" (deleteRugEvent)="onDeleteRugEvent($event)" *ngIf="selectedRug && hidenNewRug"
         [rug]="selectedRug">
-      </rug-detail>
+      </app-rug-detail>
     </div>
 
   </div>

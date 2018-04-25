@@ -3,4 +3,8 @@ export class Rug {
   name: string;
   price: string;
   serialNumber: string;
+
+  constructor(init?: Partial<Rug>) {
+    Object.assign(this, init);
+  }
 }

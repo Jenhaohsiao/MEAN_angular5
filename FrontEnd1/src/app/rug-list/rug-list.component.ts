@@ -1,8 +1,9 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Rug } from './../rug';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Rug } from '../shared/models/rug.model';
+import { RugService } from '../shared/services/rug.service';
 
 @Component({
-  selector: 'rug-list',
+  selector: 'app-rug-list',
   templateUrl: './rug-list.component.html',
   styleUrls: ['./rug-list.component.scss'],
   inputs: ['rugsArray'], // input array and show on the list.
