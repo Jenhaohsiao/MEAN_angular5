@@ -1,40 +1,37 @@
 <div>
   <form>
-    <!--if "editItem" = true , will show this section -->
-    <div *ngIf="editItem">
+    <ng-container *ngIf="editMode; else viewRug">
       <div class="form-group">
         <h5>Name:</h5>
-        <input type="input" class="form-control" name="name"
-        required placeholder="Name" [(ngModel)]="rug.name">
+        <input type="input" class="form-control" name="name" required placeholder="Name" [(ngModel)]="rug.name">
       </div>
 
       <div class="form-group">
         <h5>Price:</h5>
-        <input type="number" class="form-control" name="price"
-        required placeholder="Price (number only)" [(ngModel)]="rug.price">
+        <input type="number" class="form-control" name="price" required placeholder="Price (number only)" [(ngModel)]="rug.price">
       </div>
 
       <div class="form-group">
         <h5>Serial Number:</h5>
-        <input type="input" class="form-control" name="serialNumber"
-        required placeholder="Serial Number" [(ngModel)]="rug.serialNumber">
+        <input type="input" class="form-control" name="serialNumber" required placeholder="Serial Number" [(ngModel)]="rug.serialNumber">
       </div>
-    </div>
+    </ng-container>
 
-    <!--if "editItem" = false , will show this section  -->
-    <div *ngIf="!editItem" class="itemDetail">
-      <h5>Name:</h5>
-      <p>{{rug.name}}</p>
-      <h5>Price:</h5>
-      <p>{{rug.price  | currency: 'CAD ': 'code'}}</p>
-      <h5>Serial Number:</h5>
-      <p>{{rug.serialNumber}}</p>
-    </div>
+    <ng-template #viewRug>
+      <div *ngIf="rug" class="itemDetail">
+        <h5>Name:</h5>
+        <p>{{rug.name}}</p>
+        <h5>Price:</h5>
+        <p>{{rug.price | currency: 'CAD ': 'code'}}</p>
+        <h5>Serial Number:</h5>
+        <p>{{rug.serialNumber}}</p>
+      </div>
+    </ng-template>
 
 
-    <button *ngIf="editItem" type="button" (click)="updateRug()" class="btn btn-primary">Update</button>
-    <button *ngIf="!editItem" type="button" (click)="onNameClick()" class="btn btn-primary">Edit</button>
-    <button type="button" (click)="deleteRug()" class="btn btn-danger">Delete</button>
+    <button *ngIf="editMode" type="button" (click)="save.emit(rug)" class="btn btn-primary">Update</button>
+    <button *ngIf="!editMode" type="button" (click)="edit.emit()" class="btn btn-primary">Edit</button>
+    <button type="button" class="btn btn-danger" (click)="delete.emit(rug)">Delete</button>
 
   </form>
 </div>

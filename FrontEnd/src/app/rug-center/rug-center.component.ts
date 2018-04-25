@@ -6,66 +6,71 @@ import { RugService } from '../shared/services/rug.service';
 @Component({
   selector: 'app-rug-center',
   templateUrl: './rug-center.component.html',
-  styleUrls: ['./rug-center.component.scss'],
-  providers: [RugService]
+  styleUrls: ['./rug-center.component.scss']
 })
 export class RugCenterComponent implements OnInit {
-
   rugs: Rug[] = [];
+  rug: Rug;
+  editMode = false;
 
-  // the selected rug passed by list selected.
-  selectedRug: Rug;
-  private hidenNewRug = true;
-
-  // dependency injection, from RugService
-  constructor(private _rugService: RugService) { }
+  constructor(private rugService: RugService) { }
 
   ngOnInit() {
-    // subscribe getRugsFromHttp() from "rug.service.ts"
-    this._rugService.getRugs().subscribe(resRugData => this.rugs = resRugData);
+    this.rugService.getRugs()
+      .subscribe(rugs => this.rugs = rugs);
   }
 
-  // catch the selected item and send to detail
-  onSelectRug(rug: any) {
-    this.selectedRug = rug;
-    this.hidenNewRug = true;
-    console.log(this.selectedRug);
+  onSelectRug(rug: Rug) {
+    this.setRug(Object.assign({}, rug));
+    this.setEditMode(false);
   }
 
-  // Get form.value from HTML, and push by rugService.addRug
-  onSubmitAddRug(rug: Rug) {
-    this._rugService.addRug(rug).subscribe(resNewRug => {
-      // After submit, and the view also gets updated.
-      this.rugs.push(resNewRug);
-      // the new Rug shows on the detail view
-      this.selectedRug = resNewRug;
-      this.hidenNewRug = true;
+  onSaveRug(rug: Rug) {
+    if (rug._id) {
+      this.rugService.updateRug(rug)
+        .subscribe(_ => {
+          const result = this.getRugById(rug._id);
+          result.name = rug.name;
+          result.price = rug.price;
+          result.serialNumber = rug.serialNumber;
 
-    });
+        });
+    } else {
+      this.rugService.addRug(rug)
+        .subscribe(result => {
+          this.rugs.push(result);
+
+          this.setRug(result);
+        });
+    }
   }
 
-  onUpdateRugEvent(rug: any) {
-    this._rugService.updateRug(rug).subscribe(resUpdatedRug =>
-      rug = resUpdatedRug
-    );
-    // this.selectedRug = null;
+  onDeleteRug(rug: Rug) {
+    this.rugService.deleteRug(rug._id)
+      .subscribe(_ => {
+        this.rugs = this.rugs.filter(rugEntity => rugEntity._id !== rug._id);
+
+        this.setRug(null);
+      });
+  }
+  onAddRug() {
+    this.rug = new Rug();
+    this.onEdit();
   }
 
-  onDeleteRugEvent(rug: any) {
-    const rugsForDel = this.rugs;
-    // update the UI, show new list without the item deleted.
-    this._rugService.deleteRug(rug).subscribe(resDeletedRug => {
-      for (let i = 0; i < rugsForDel.length; i++) {
-        if (rugsForDel[i]._id === rug._id) {
-          rugsForDel.splice(i, 1);
-        }
-      }
-    });
-    this.selectedRug = null;
+  onEdit() {
+    this.setEditMode(true);
   }
 
-  newRug() {
-    this.hidenNewRug = false;
+  private setEditMode(editMode: boolean) {
+    this.editMode = editMode;
+  }
+
+  private setRug(rug: Rug) {
+    this.rug = rug;
+  }
+  private getRugById(id: string): Rug {
+    return this.rugs.find(rug => rug._id === id);
   }
 
 }

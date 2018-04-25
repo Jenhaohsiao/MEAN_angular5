@@ -7,21 +7,14 @@ import { RugService } from '../shared/services/rug.service';
   selector: 'app-rug-list',
   templateUrl: './rug-list.component.html',
   styleUrls: ['./rug-list.component.scss'],
-  inputs: ['rugs'], // input array and show on the list.
-  outputs: ['SelectRug'] // output the selected item send to rug-center.
 })
 export class RugListComponent implements OnInit {
+  @Input() rugs: Rug[];
 
-  public SelectRug = new EventEmitter(); // For click event and output
+  @Output() select = new EventEmitter();
 
-  constructor() { }
+  constructor(public rugService: RugService) { }
 
   ngOnInit() {
   }
-
-  // the function for click event
-  onSelect(vid: Rug) {
-    this.SelectRug.emit(vid);
-  }
-
 }
