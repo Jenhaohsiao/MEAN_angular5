@@ -1,46 +1,34 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+
 import { environment } from '../../../environments/environment';
 import { Rug } from '../models/rug.model';
 
 @Injectable()
 export class RugService {
+  readonly rugApi = `${environment.url}/api/rugs`;
+  private headers: HttpHeaders;
 
-  // get url by the path we set on "service.js" and "api.js"
-  private _getUrl = '/api/rugs';
-  private _postUrl = '/api/rug';
-  private _putUrl = '/api/rug/';
-  private _deleteUrl = '/api/rug/';
+  constructor(
+    private httpClient: HttpClient
+  ) {}
 
-  // dependency injection to get and instance of Http
-  constructor(private _http: Http) { }
 
-  getRugsFromHttp() {
-    // Get response mapped to JSON
-    return this._http.get(this._getUrl)
-    .map((response: Response) => response.json());
+  getRugs(): Observable< Rug[]> {
+    return this.httpClient.get<Rug[]>(this.rugApi);
   }
 
-  addRug(rug: Rug) {
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({ headers: headers});
-    // Mapped response to JSON and pass JSON stringify file to DataBase
-    return this._http.post(this._postUrl, JSON.stringify(rug), options)
-    .map((response: Response) => response.json());
+  addRug(rug: Rug): Observable<Rug> {
+    return this.httpClient.post<Rug>(this.rugApi, rug, { headers: this.headers });
   }
 
-  updateRug(rug: Rug) {
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({ headers: headers});
-    return this._http.put(this._putUrl + rug._id, JSON.stringify(rug), options)
-    .map((response: Response) => response.json());
+  updateRug(rug: Rug): Observable<void > {
+    return this.httpClient.put<void>(`${this.rugApi}/${rug._id}`, rug, { headers: this.headers });
   }
 
-  deleteRug(rug: Rug) {
-    return this._http.delete(this._deleteUrl + rug._id)
-    .map((response: Response) => response.json());
+  deleteRug(id: string): Observable<void > {
+    return this.httpClient.delete<void>(`${this.rugApi}/${id}`);
   }
 
 }

@@ -22,7 +22,7 @@ export class RugCenterComponent implements OnInit {
 
   ngOnInit() {
     // subscribe getRugsFromHttp() from "rug.service.ts"
-    this._rugService.getRugsFromHttp().subscribe(resRugData => this.rugsArray = resRugData);
+    this._rugService.getRugs().subscribe(resRugData => this.rugsArray = resRugData);
   }
 
   // catch the selected item and send to detail
