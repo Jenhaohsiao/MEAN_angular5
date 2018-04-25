@@ -11,7 +11,7 @@ import { RugService } from '../shared/services/rug.service';
 })
 export class RugCenterComponent implements OnInit {
 
-  rugsArray: Array<Rug>;
+  rugs: Rug[] = [];
 
   // the selected rug passed by list selected.
   selectedRug: Rug;
@@ -22,7 +22,7 @@ export class RugCenterComponent implements OnInit {
 
   ngOnInit() {
     // subscribe getRugsFromHttp() from "rug.service.ts"
-    this._rugService.getRugs().subscribe(resRugData => this.rugsArray = resRugData);
+    this._rugService.getRugs().subscribe(resRugData => this.rugs = resRugData);
   }
 
   // catch the selected item and send to detail
@@ -36,7 +36,7 @@ export class RugCenterComponent implements OnInit {
   onSubmitAddRug(rug: Rug) {
     this._rugService.addRug(rug).subscribe(resNewRug => {
       // After submit, and the view also gets updated.
-      this.rugsArray.push(resNewRug);
+      this.rugs.push(resNewRug);
       // the new Rug shows on the detail view
       this.selectedRug = resNewRug;
       this.hidenNewRug = true;
@@ -52,12 +52,12 @@ export class RugCenterComponent implements OnInit {
   }
 
   onDeleteRugEvent(rug: any) {
-    const rugsArrayForDel = this.rugsArray;
+    const rugsForDel = this.rugs;
     // update the UI, show new list without the item deleted.
     this._rugService.deleteRug(rug).subscribe(resDeletedRug => {
-      for (let i = 0; i < rugsArrayForDel.length; i++) {
-        if (rugsArrayForDel[i]._id === rug._id) {
-          rugsArrayForDel.splice(i, 1);
+      for (let i = 0; i < rugsForDel.length; i++) {
+        if (rugsForDel[i]._id === rug._id) {
+          rugsForDel.splice(i, 1);
         }
       }
     });
