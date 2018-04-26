@@ -50,7 +50,8 @@ Open you browser and enter ```http://localhost:4200/``` in URL. It would show th
 
 
 ![image](https://user-images.githubusercontent.com/12676014/39284520-aeaff13c-48e1-11e8-82c0-c5c9db1d9fec.png)
-![image](https://user-images.githubusercontent.com/12676014/39284991-18f11f60-48e4-11e8-912b-bedaa55c9280.png)
-![image](https://user-images.githubusercontent.com/12676014/39285017-3022fbae-48e4-11e8-8958-c9b6cb4a2293.png)
-![image](https://user-images.githubusercontent.com/12676014/39285033-4417a38a-48e4-11e8-81eb-8bd4cfa3bb47.png)
+![image](https://user-images.githubusercontent.com/12676014/39304577-19676a3c-4928-11e8-9f2e-c6888837e744.png)
+![image](https://user-images.githubusercontent.com/12676014/39304608-2cc9cb9c-4928-11e8-9d2e-51e3eb3991e4.png)
+![image](https://user-images.githubusercontent.com/12676014/39304531-f5ada07a-4927-11e8-9448-f9962776084d.png)
+
 
