@@ -60,7 +60,7 @@ When you click "List" button, it will show you the list page.
 Review any item details by selected. It also allow you to edit or delete.
 ![image](https://user-images.githubusercontent.com/12676014/39304531-f5ada07a-4927-11e8-9448-f9962776084d.png)
 
-If user using unexpected URL under this application, it will show you 404 page.
+Enter unexpected URL will show '404 page'.
 ![image](https://user-images.githubusercontent.com/12676014/39305898-aa48f08a-492c-11e8-9869-6f01c9bd15f0.png)
 
 
