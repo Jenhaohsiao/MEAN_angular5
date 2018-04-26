@@ -10,6 +10,7 @@ import { RugCenterComponent } from './rug-center/rug-center.component';
 import { RugDetailComponent } from './rug-detail/rug-detail.component';
 import { RugListComponent } from './rug-list/rug-list.component';
 import { RugService } from './shared/services/rug.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RugService } from './shared/services/rug.service';
     HomeComponent,
     RugCenterComponent,
     RugListComponent,
-    RugDetailComponent
+    RugDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

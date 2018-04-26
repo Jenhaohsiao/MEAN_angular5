@@ -5,7 +5,7 @@ const rugSchema = new Schema({
     name: String,
     price: Number,
     serialNumber: String,
-    imagePath:String
+    imagePath: String
 });
 
 module.exports = mongoose.model('rug', rugSchema, 'rugs');
