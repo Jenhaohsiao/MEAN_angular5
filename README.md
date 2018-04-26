@@ -1,4 +1,4 @@
-# MEAN stack developer test project
+# MEAN Stack Developer Test Project
 <br/>  
 
 >## Download
