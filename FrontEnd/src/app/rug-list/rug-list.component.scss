@@ -1,16 +1,19 @@
 .list-item-background {
     padding: 10px 5px;
     margin: 5px 0px;
-    background-color: #b6c1c0;
-    border-radius: 10px;
+    border: 1px solid #579b94;
+    border-radius: 5px;
     font-size: 15px;
     font-weight: 100;
-
-    &:hover{
-      background-color: #a4dad5;
+    &:hover {
+        background-color: #a4dad5;
+        border: 1px solid #a4dad5;
     }
-
-    &:active{
-      background-color: #7bd2c9;
+    &.active {
+        background-color: #7bd2c9;
+    }
+    .list-image {
+        width: 40px;
+        height: 40px;
     }
 }
