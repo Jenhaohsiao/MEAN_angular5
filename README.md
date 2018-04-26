@@ -64,4 +64,6 @@ If user using unexpected URL under this application, it will show you 404 page.
 ![image](https://user-images.githubusercontent.com/12676014/39305898-aa48f08a-492c-11e8-9869-6f01c9bd15f0.png)
 
 
+You also can check the back-end by URL, Using:http://localhost:3000/api/rugs
+![image](https://user-images.githubusercontent.com/12676014/39307917-1bd85d44-4932-11e8-82bb-8c146434af0b.png)
 
