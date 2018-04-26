@@ -1,13 +1,27 @@
 .navbar-background {
-  background-color: #766969;
+    background-color: #766969;
 }
 
 #logo-small-container {
-  height: 50px;
-  width: auto;
-  border-radius: 25%;
+    height: 50px;
+    width: auto;
+    border-radius: 25%;
 }
 
 .form-container {
-  margin-top: 50px;
+    margin-top: 50px;
+}
+
+.navbar-button {
+    color: #766969;
+    margin: 5px 10px 0px 10px;
+    width: 80px;
+    &:hover {
+        background-color: #f54c4c;
+        color: #ffffff;
+    }
+    &.active {
+        background-color: #c66a6a;
+        color: #ffffff;
+    }
 }
