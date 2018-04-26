@@ -1,17 +1,26 @@
 <nav class="navbar navbar-expand-sm navbar-dark navbar-background">
   <ul class="navbar-nav">
     <div class="navbar-header ">
-      <img src="../assets/images/logo_big.png" alt="Logo" id="logo-small-container">
-      <a class="navbar-brand" href="#">Inventory System</a>
+      <img src="../assets/images/logo_big.png"
+           alt="Logo"
+           id="logo-small-container">
+      <a class="navbar-brand"
+         href="#">&nbsp;Inventory System</a>
     </div>
 
-    <li class="nav-item ">
-      <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-    </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/rugs" routerLinkActive="active">List</a>
+      <button type="button"
+              class="btn navbar-button btn-default"
+              routerLink="/home"
+              routerLinkActive="active">Home</button>
     </li>
 
+    <li class="nav-item">
+      <button type="button"
+              class="btn navbar-button btn-default"
+              routerLink="/rugs"
+              routerLinkActive="active">List</button>
+    </li>
   </ul>
 </nav>
 

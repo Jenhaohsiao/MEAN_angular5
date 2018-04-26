@@ -10,11 +10,16 @@ import { RugService } from '../shared/services/rug.service';
 })
 export class RugListComponent implements OnInit {
   @Input() rugs: Rug[];
+  @Input() rug: Rug;
 
   @Output() select = new EventEmitter();
 
   constructor(public rugService: RugService) { }
 
   ngOnInit() {
+  }
+
+  canActive(id: string): boolean {
+    return this.rug ? this.rug._id === id : false;
   }
 }

@@ -1,39 +1,77 @@
 <form #form="ngForm">
-    <ng-container *ngIf="editMode; else viewRug">
-      <div class="form-group">
-        <h5>Name:</h5>
-        <input type="input" class="form-control" name="name" required placeholder="Name" [(ngModel)]="rug.name">
+  <ng-container *ngIf="editMode; else viewRug">
+    <h1>Please fill out the form below</h1> <br/>
+    <div class="form-group">
+      <h6>Name:</h6>
+      <input type="input"
+             class="form-control"
+             name="name"
+             required
+             placeholder="Name"
+             [(ngModel)]="rug.name">
+    </div>
+
+    <div class="form-group">
+      <h6>Price:<span class="remind-number">(Number Only)</span></h6>
+      <input type="number"
+             class="form-control"
+             name="price"
+             required
+             placeholder="Price"
+             [(ngModel)]="rug.price">
+    </div>
+
+    <div class="form-group">
+      <h6>Serial Number:</h6>
+      <input type="input"
+             class="form-control"
+             name="serialNumber"
+             required
+             placeholder="Serial Number"
+             [(ngModel)]="rug.serialNumber">
+    </div>
+
+    <div class="form-group">
+      <label for="file">Choose Image(Option)</label>
+      <input type="file"
+             id="file"
+             (change)="fileChange.emit($event)">
+    </div>
+  </ng-container>
+
+  <ng-template #viewRug>
+    <div *ngIf="rug"
+         class="itemDetail">
+      <div class="imgbox">
+        <img class="item-image center-fit"
+             [src]="rugService.getSafeResourceUrl(rug)">
       </div>
 
-      <div class="form-group">
-        <h5>Price:</h5>
-        <input type="number" class="form-control" name="price" required placeholder="Price" [(ngModel)]="rug.price">
-      </div>
+      <h6>Name:
+        <span class="item-value">{{rug.name}}</span>
+      </h6>
 
-      <div class="form-group">
-        <h5>Serial Number:</h5>
-        <input type="input" class="form-control" name="serialNumber" required placeholder="Serial Number" [(ngModel)]="rug.serialNumber">
-      </div>
+      <h6>Price:
+        <span class="item-value">{{rug.price | currency: 'CAD ': 'code'}}</span>
+      </h6>
 
-      <div class="form-group">
-        <label for="file">Choose Image</label>
-        <input type="file" id="file" (change)="fileChange.emit($event)">
-      </div>
-    </ng-container>
+      <h6>Serial Number:
+        <span class="item-value">{{rug.serialNumber}}</span>
+      </h6>
 
-    <ng-template #viewRug>
-      <div *ngIf="rug" class="itemDetail">
-        <img [src]="rugService.getSafeResourceUrl(rug)">
-        <h5>Name:</h5>
-        <p>{{rug.name}}</p>
-        <h5>Price:</h5>
-        <p>{{rug.price | currency: 'CAD ': 'code'}}</p>
-        <h5>Serial Number:</h5>
-        <p>{{rug.serialNumber}}</p>
-      </div>
-    </ng-template>
+    </div>
+  </ng-template>
 
-    <button *ngIf="editMode" type="button" [disabled]="!form.valid" (click)="save.emit(rug)" class="btn btn-primary">Update</button>
-    <button *ngIf="!editMode" type="button" (click)="edit.emit()" class="btn btn-primary">Edit</button>
-    <button type="button" class="btn btn-danger" (click)="delete.emit(rug)">Delete</button>
-  </form>
+  <button *ngIf="editMode"
+          type="button"
+          [disabled]="!form.valid"
+          (click)="save.emit(rug)"
+          class="btn btn-primary">Update</button>
+  <button *ngIf="!editMode"
+          type="button"
+          (click)="edit.emit()"
+          class="btn btn-primary">Edit</button>
+  <button type="button"
+          class="btn btn-danger"
+          (click)="delete.emit(rug)">Delete</button>
+</form>
