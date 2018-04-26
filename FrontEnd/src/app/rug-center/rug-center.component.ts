@@ -13,6 +13,7 @@ export class RugCenterComponent implements OnInit {
   rug: Rug;
   fileToUpload: File;
   editMode = false;
+  showWelcome = true;
 
   constructor(private rugService: RugService) { }
 
@@ -25,6 +26,7 @@ export class RugCenterComponent implements OnInit {
     this.setRug(Object.assign({}, rug));
     this.setEditMode(false);
     this.resetFileToUpload();
+    this.hideWelcome();
   }
 
   onSaveRug(rug: Rug) {
@@ -63,6 +65,7 @@ export class RugCenterComponent implements OnInit {
     this.rug = new Rug();
     this.onEdit();
     this.resetFileToUpload();
+    this.hideWelcome();
   }
 
   onEdit() {
@@ -90,6 +93,10 @@ export class RugCenterComponent implements OnInit {
 
   private setEditMode(editMode: boolean) {
     this.editMode = editMode;
+  }
+
+  private hideWelcome() {
+    this.showWelcome = false;
   }
 
   private setRug(rug: Rug) {
