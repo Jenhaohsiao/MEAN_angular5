@@ -11,7 +11,6 @@ import { RugDetailComponent } from './rug-detail/rug-detail.component';
 import { RugListComponent } from './rug-list/rug-list.component';
 import { RugService } from './shared/services/rug.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +21,13 @@ import { RugService } from './shared/services/rug.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [RugService],
+  providers: [
+    RugService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

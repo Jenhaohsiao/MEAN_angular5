@@ -11,6 +11,7 @@ import { RugService } from '../shared/services/rug.service';
 export class RugCenterComponent implements OnInit {
   rugs: Rug[] = [];
   rug: Rug;
+  fileToUpload: File;
   editMode = false;
 
   constructor(private rugService: RugService) { }
@@ -23,6 +24,7 @@ export class RugCenterComponent implements OnInit {
   onSelectRug(rug: Rug) {
     this.setRug(Object.assign({}, rug));
     this.setEditMode(false);
+    this.resetFileToUpload();
   }
 
   onSaveRug(rug: Rug) {
@@ -34,6 +36,7 @@ export class RugCenterComponent implements OnInit {
           result.price = rug.price;
           result.serialNumber = rug.serialNumber;
 
+          this.uploadImage();
         });
     } else {
       this.rugService.addRug(rug)
@@ -41,6 +44,7 @@ export class RugCenterComponent implements OnInit {
           this.rugs.push(result);
 
           this.setRug(result);
+          this.uploadImage();
         });
     }
   }
@@ -51,15 +55,37 @@ export class RugCenterComponent implements OnInit {
         this.rugs = this.rugs.filter(rugEntity => rugEntity._id !== rug._id);
 
         this.setRug(null);
+        this.resetFileToUpload();
       });
   }
+
   onAddRug() {
     this.rug = new Rug();
     this.onEdit();
+    this.resetFileToUpload();
   }
 
   onEdit() {
     this.setEditMode(true);
+  }
+
+  onFileChange(file: any) {
+    this.fileToUpload = file.target.files[0];
+  }
+
+  private uploadImage() {
+    if (this.fileToUpload) {
+      this.rugService.uploadImage(this.rug._id, this.fileToUpload)
+        .subscribe(file => {
+          const result = this.getRugById(this.rug._id);
+          result.imagePath = file.filename;
+
+          this.setRug(result);
+          this.setEditMode(false);
+        });
+    } else {
+      this.setEditMode(false);
+    }
   }
 
   private setEditMode(editMode: boolean) {
@@ -69,8 +95,12 @@ export class RugCenterComponent implements OnInit {
   private setRug(rug: Rug) {
     this.rug = rug;
   }
+
+  private resetFileToUpload() {
+    this.fileToUpload = null;
+  }
+
   private getRugById(id: string): Rug {
     return this.rugs.find(rug => rug._id === id);
   }
-
 }
