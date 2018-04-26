@@ -12,7 +12,7 @@
 
 * Make sure you have **Node.Js**, **Express** and **Angular CLI** latest version installed in your computer.
 
-* Install node_modules package for this project. Open **Termainal** for MacOS or **command prompt** for Windows OS.
+* Install node_modules package for this project. Open **Termainal** for MacOS or **Command Prompt** for Windows OS.
 
   - Under **FrontEnd** folder, run
   
@@ -26,7 +26,7 @@
 
 >## Execution
 
-* Use **Termainal** for MacOS or **command prompt** for Windows OS. Use two different windows to execute backend and frontend servers
+* Use **Termainal** for MacOS or **Command Prompt** for Windows OS. Use two different windows to execute backend and frontend servers
 
   - Use the first one window and under **FrontEnd** folder, run
   
