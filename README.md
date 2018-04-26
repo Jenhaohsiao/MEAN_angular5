@@ -40,10 +40,9 @@
   
      ```node server```
     
-    When you see **Server running on localhost:3000**, it means the back-end server is running.
-    
-    
-    
+    When you see **Server running on localhost:3000**, it means the back-end server is running.    
+
+
 
 >## Run On Browser
 
