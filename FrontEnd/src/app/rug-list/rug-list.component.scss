@@ -13,7 +13,11 @@
         background-color: #7bd2c9;
     }
     .list-image {
-        width: 40px;
-        height: 40px;
+
+        max-width: 40px;
+        max-height: 70px;
+        margin-right: 10px;
+        float:left;
+
     }
 }
