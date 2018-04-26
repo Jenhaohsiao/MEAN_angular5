@@ -12,7 +12,7 @@
 
 * Make sure you have **Node.Js**, **Express** and **Angular CLI** latest version installed in your computer.
 
-* Install node_modules package for this project, open **Termainal** for MacOS or **command prompt** for Windows OS.
+* Install node_modules package for this project. Open **Termainal** for MacOS or **command prompt** for Windows OS.
 
   - Under **FrontEnd** folder, run
   
